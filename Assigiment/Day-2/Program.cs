@@ -36,30 +36,21 @@ namespace empdetails
 
      public class employee
     {
-        public string Name;
-        public int EmpNo;
-        public decimal Basic;
-        public short DeptNo;
-        public static int count;
+        private string Name;
+        private int EmpNo;
+        private decimal Basic;
+        private short DeptNo;
+        private static int count;
 
-        employee(string x = null, decimal y = 0, short z = 0)
+        public employee(string x = null, decimal y = 0, short z = 0)
         {
-            name = x;
-            basic = y;
-            depno = z;
-            empNo = count;
+          this.name = x;
+          this.basic = y;
+          this.depno = z;
+          this.empNo = ++count;
         }
 
-        static employee()
-        {
-            count++;
-        }
-
-        employee()
-        {
-
-        }
-
+        
 
         public int empNo
         {
@@ -79,13 +70,13 @@ namespace empdetails
             set
             {
                 decimal a=Convert.ToDecimal(value);
-                if (1 < a && a < 10000)
+                if (1 < a && a < 100000000)
                 {
                     this.Basic = a;
                 }
                 else
                 {
-                    Console.WriteLine("Basic sal is between 1 to 10000");
+                    Console.WriteLine("Basic sal is between 1 to 1000000000\n");
 
                 }
             }
@@ -107,7 +98,7 @@ namespace empdetails
                 }
                 else
                 {
-                    Console.WriteLine("no blank names should be allowed");
+                    Console.WriteLine("no blank names should be allowed\n");
                 }
             }
 
@@ -128,7 +119,7 @@ namespace empdetails
                 }    
                 else
                 {
-                    Console.WriteLine("Enter valid department number");
+                    Console.WriteLine("Enter valid department number\n");
                 }
             }
             get
@@ -140,7 +131,8 @@ namespace empdetails
         public decimal GetNetSalary(decimal basic)
         {
             decimal Hra=100;
-            decimal Net = basic + Hra;
+         
+            decimal Net = this.basic + Hra;
             return Net;
         }
 
